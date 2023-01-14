@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 
-
+// httpclient é responsavel para o consumo da api
 @Injectable({
   providedIn: 'root'
 })

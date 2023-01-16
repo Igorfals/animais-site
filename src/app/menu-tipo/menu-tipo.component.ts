@@ -24,7 +24,7 @@ export class MenuTipoComponent implements OnInit {
     this.total = result.total
   }
   // na linha 21 estou chamando a função que vai buscar na minha api os tipos de animais Vertebrados e Invertebrados
-  escolhertipo(id: string) {
+  escolherTipo(id: string) {
     this.router.navigate([`categorias-tipos/${id}`])
   }
 }

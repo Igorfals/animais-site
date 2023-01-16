@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from '../service/categorias.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-categorias-animais',
@@ -12,7 +12,7 @@ export class CategoriasAnimaisComponent implements OnInit {
   total: number = 0
   items: any[] = []
   id: any
-  constructor(private categoriaService: CategoriasService, private activeRoute: ActivatedRoute) {
+  constructor(private categoriaService: CategoriasService, private activeRoute: ActivatedRoute, private router: Router) {
     this.id = activeRoute.params
   }
 
@@ -29,5 +29,8 @@ export class CategoriasAnimaisComponent implements OnInit {
     const result = await this.categoriaService.listarCategoriasTipo(filtro)
     this.items = result.categoriaAnimais
     this.total = result.total
+  }
+  escolherCategoria(id: string) {
+    this.router.navigate([`animais-categorias/${id}`])
   }
 }

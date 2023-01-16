@@ -18,4 +18,13 @@ export class AnimaisService {
     }
     return this.http.get(`${this.baseurl}/animais`, httpOptions).toPromise()
   }
+  listarAnimaisTipos(filtros: any): any {
+    const httpOptions: any = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      params: filtros
+    }
+    return this.http.get(`${this.baseurl}/animais`, httpOptions).toPromise()
+  }
 }

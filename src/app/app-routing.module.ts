@@ -19,6 +19,10 @@ const routes: Routes = [
     component: AnimaisComponent
   },
   {
+    path: 'animais-categorias/:id',
+    component: AnimaisComponent
+  },
+  {
     path: 'categorias-tipos/:id',
     component: CategoriasAnimaisComponent
   }

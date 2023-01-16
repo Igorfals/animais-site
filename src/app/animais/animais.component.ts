@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AnimaisService } from '../service/animais.service'
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-animais',
@@ -9,15 +10,22 @@ import { AnimaisService } from '../service/animais.service'
 export class AnimaisComponent implements OnInit {
   total: number = 0
   items: any[] = []
-  constructor(private animaisService: AnimaisService) {
-
+  id: any
+  constructor(private animaisService: AnimaisService, private activeRoute: ActivatedRoute) {
+    this.id = activeRoute.params
   }
 
   ngOnInit(): void {
     this.getitems()
   }
   async getitems() {
-    const result = await this.animaisService.listarAnimais()
+    let filtro = {}
+    if (typeof this.id.value.id === 'string') {
+      filtro = {
+        categoria: this.id.value.id
+      }
+    }
+    const result = await this.animaisService.listarAnimaisTipos(filtro)
     this.items = result.animais
     this.total = result.total
   }

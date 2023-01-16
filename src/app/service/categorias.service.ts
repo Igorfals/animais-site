@@ -17,4 +17,13 @@ export class CategoriasService {
     }
     return this.http.get(`${this.baseurl}/categoria-animais`, httpOptions).toPromise()
   }
+  listarCategoriasTipo(filtros: any): any {
+    const httpOptions: any = {
+      header: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      params: filtros
+    }
+    return this.http.get(`${this.baseurl}/categoria-animais`, httpOptions).toPromise()
+  }
 }

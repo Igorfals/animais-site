@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from '../service/categorias.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-categorias-animais',
@@ -10,18 +11,23 @@ export class CategoriasAnimaisComponent implements OnInit {
 
   total: number = 0
   items: any[] = []
-  constructor(private categoriaService: CategoriasService) {
-
+  id: any
+  constructor(private categoriaService: CategoriasService, private activeRoute: ActivatedRoute) {
+    this.id = activeRoute.params
   }
 
   ngOnInit(): void {
     this.getitems()
   }
   async getitems() {
-    const result = await this.categoriaService.listarCategorias()
+    let filtro = {}
+    if (typeof this.id.value.id === 'string') {
+      filtro = {
+        tipo: this.id.value.id,
+      }
+    }
+    const result = await this.categoriaService.listarCategoriasTipo(filtro)
     this.items = result.categoriaAnimais
     this.total = result.total
-    console.log(result);
-
   }
 }

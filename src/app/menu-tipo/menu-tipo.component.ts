@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-tipo.component.css']
 })
 export class MenuTipoComponent implements OnInit {
-
   total: number = 0
   items: any[] = []
   constructor(private tipoService: TipoAnimaisService, private router: Router) {

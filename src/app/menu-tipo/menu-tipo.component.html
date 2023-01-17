@@ -1,7 +1,3 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6" *ngFor="let tipo of items" (click)='escolherTipo(tipo.id_tipo)'>
-      <h1>{{tipo.nome_tipo}}</h1>
-    </div>
-  </div>
-</div>
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let tipo of items" (click)="escolherTipo(tipo.id_tipo)">{{tipo.nome_tipo}}</mat-grid-tile>
+</mat-grid-list>
